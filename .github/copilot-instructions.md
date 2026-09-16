@@ -29,3 +29,13 @@ Rules:
 ## Validating changes
 
 There is no build step. To validate a change, mentally (or visually, e.g. via the Mermaid Live Editor or the VS Code Markdown preview) confirm the `mermaid` code block is syntactically valid and renders as described.
+
+## Consumer-Facing AI Components
+
+This repo also ships GitHub Copilot customizations that let other projects generate C4 diagrams using these conventions (see the README's "Use These Cheatsheets with GitHub Copilot" section for install instructions aimed at consumers):
+
+- [.github/skills/c4-mermaid-diagrams/](./skills/c4-mermaid-diagrams/) — the primary skill; bundles its own copies of the 4 cheatsheets under `references/` so it is self-contained and copy-paste-able into another project's `.github/skills/`.
+- [.github/prompts/](./prompts/) — `c4-context`, `c4-container`, `c4-component`, `c4-relationships` slash commands for quick single-diagram generation.
+- [.github/agents/c4-architect.agent.md](./agents/c4-architect.agent.md) — a custom agent that interviews the user and produces a linked Context/Container/Component diagram set.
+
+**Maintenance rule:** `C4-cheatsheets/` is the canonical source. Whenever you edit a cheatsheet there, mirror the same change into the matching file under `.github/skills/c4-mermaid-diagrams/references/` and update its "Synced from ... on `<date>`" marker comment, so the bundled skill copy never drifts from the original.

@@ -67,3 +67,17 @@ mermaid:
     nodeSpacing: 50
     padding: 15
 ```
+
+## Use These Cheatsheets with GitHub Copilot
+
+This repo also ships ready-to-use [GitHub Copilot customizations](https://code.visualstudio.com/docs/copilot/customization/overview) so you can generate C4 diagrams that follow these exact conventions directly in your own project's Copilot Chat.
+
+| Artifact                                                                         | What it does                                                                                    | Install into your project                                                                         |
+| -------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| [c4-mermaid-diagrams skill](.github/skills/c4-mermaid-diagrams/)                 | Auto-triggers on requests like "create a C4 diagram" and picks the right level/conventions      | Copy the whole `.github/skills/c4-mermaid-diagrams/` folder into your project's `.github/skills/` |
+| [/c4-context, /c4-container, /c4-component, /c4-relationships](.github/prompts/) | Slash commands for generating one diagram level at a time                                       | Copy the files in `.github/prompts/` into your project's `.github/prompts/`                       |
+| [C4 Architect agent](.github/agents/c4-architect.agent.md)                       | Interviews you about a system and produces a linked Context → Container → Component diagram set | Copy `.github/agents/c4-architect.agent.md` into your project's `.github/agents/`                 |
+
+The skill is **self-contained**: it bundles its own copies of the 4 cheatsheets under `references/`, so copying just that one folder is enough — it doesn't depend on the rest of this repo. The prompts and agent reference the skill's bundled files, so install the skill alongside them.
+
+> Currently targets GitHub Copilot only (`.github/`). Support for other assistants (e.g. Claude, via `.claude/skills/`) is planned once this proves useful.
