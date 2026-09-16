@@ -1,6 +1,6 @@
 # C4 Container Diagram - Mermaid Flowchart Cheatsheet
 
-<!-- Synced from C4-cheatsheets/C4-Container-Diagram-Mermaid-Flowchart-Cheatsheet.md on 2026-09-16. Keep in sync when the source changes. -->
+<!-- Synced from C4-cheatsheets/C4-Container-Diagram-Mermaid-Flowchart-Cheatsheet.md on 2026-09-16 (Person/PersonExt added). Keep in sync when the source changes. -->
 
 > Container diagrams show the high-level technology choices within a software system. Containers represent deployable units (web apps, APIs, databases, microservices, etc.).
 
@@ -41,6 +41,8 @@ All Container-level elements shown together, plus the C4-PlantUML macro each one
 
 ```mermaid
 flowchart TB
+    classDef Person fill:#08427b,stroke:#073b6f,color:#fff,rx:20px,ry:20px,stroke-width:2px;
+    classDef PersonExt fill:#999999,stroke:#8a8a8a,color:#fff,rx:20px,ry:20px,stroke-width:2px;
     classDef Container fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef ContainerExt fill:#999999,stroke:#8a8a8a,color:#fff,stroke-width:2px;
     classDef ContainerDb fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
@@ -94,6 +96,7 @@ flowchart TB
 
 ```mermaid
 flowchart TB
+    classDef Person fill:#08427b,stroke:#073b6f,color:#fff,rx:20px,ry:20px,stroke-width:2px;
     classDef Container fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef ContainerDb fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef ContainerExt fill:#999999,stroke:#8a8a8a,color:#fff,stroke-width:2px;
@@ -138,6 +141,9 @@ flowchart TB
 
     class paymentgateway,email ContainerExt
 
+    class user Person
+    class paymentgateway,email ContainerExt
+
     user -->|HTTPS| spa
     paymentapi -->|REST| paymentgateway
     queue -->|HTTP Webhook| email
@@ -149,6 +155,7 @@ flowchart TB
 
 ```mermaid
 flowchart TB
+    classDef Person fill:#08427b,stroke:#073b6f,color:#fff,rx:20px,ry:20px,stroke-width:2px;
     classDef Container fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef ContainerDb fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef ContainerExt fill:#999999,stroke:#8a8a8a,color:#fff,stroke-width:2px;
@@ -182,6 +189,9 @@ flowchart TB
 
     class ldap,fileserver ContainerExt
 
+    class browser,admin Person
+    class ldap,fileserver ContainerExt
+
     browser -->|HTTPS| web
     admin -->|HTTPS| web
     api -->|LDAP| ldap
@@ -194,6 +204,7 @@ flowchart TB
 
 ```mermaid
 flowchart TB
+    classDef Person fill:#08427b,stroke:#073b6f,color:#fff,rx:20px,ry:20px,stroke-width:2px;
     classDef Container fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef ContainerDb fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef ContainerQueue fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
@@ -251,6 +262,9 @@ flowchart TB
     oauth["🔐<br/><b>OAuth Provider</b><br/>[Container]<br/>Auth0"]
     analytics["📋<br/><b>Analytics</b><br/>[Container]<br/>Segment"]
 
+    class oauth,analytics ContainerExt
+
+    class user,admin Person
     class oauth,analytics ContainerExt
 
     user -->|HTTPS| spa
@@ -313,6 +327,7 @@ flowchart TB
 ```mermaid
 flowchart TB
     %% ===== STYLES =====
+    classDef Person fill:#08427b,stroke:#073b6f,color:#fff,rx:20px,ry:20px,stroke-width:2px;
     classDef Container fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef ContainerDb fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef ContainerQueue fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
@@ -321,6 +336,8 @@ flowchart TB
 
     %% ===== ACTORS =====
     user["👤<br/><b>User</b>"]
+
+    class user Person
 
     %% ===== MAIN SYSTEM BOUNDARY =====
     subgraph sys["System Name [Software System]"]

@@ -39,6 +39,8 @@ All Container-level elements shown together, plus the C4-PlantUML macro each one
 
 ```mermaid
 flowchart TB
+    classDef Person fill:#08427b,stroke:#073b6f,color:#fff,rx:20px,ry:20px,stroke-width:2px;
+    classDef PersonExt fill:#999999,stroke:#8a8a8a,color:#fff,rx:20px,ry:20px,stroke-width:2px;
     classDef Container fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef ContainerExt fill:#999999,stroke:#8a8a8a,color:#fff,stroke-width:2px;
     classDef ContainerDb fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
@@ -92,6 +94,7 @@ flowchart TB
 
 ```mermaid
 flowchart TB
+    classDef Person fill:#08427b,stroke:#073b6f,color:#fff,rx:20px,ry:20px,stroke-width:2px;
     classDef Container fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef ContainerDb fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef ContainerExt fill:#999999,stroke:#8a8a8a,color:#fff,stroke-width:2px;
@@ -134,6 +137,7 @@ flowchart TB
     paymentgateway["💳<br/><b>Payment Gateway</b><br/>[Container]<br/>Stripe API"]
     email["📧<br/><b>Email Service</b><br/>[Container]<br/>SendGrid"]
 
+    class user Person
     class paymentgateway,email ContainerExt
 
     user -->|HTTPS| spa
@@ -147,6 +151,7 @@ flowchart TB
 
 ```mermaid
 flowchart TB
+    classDef Person fill:#08427b,stroke:#073b6f,color:#fff,rx:20px,ry:20px,stroke-width:2px;
     classDef Container fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef ContainerDb fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef ContainerExt fill:#999999,stroke:#8a8a8a,color:#fff,stroke-width:2px;
@@ -178,6 +183,7 @@ flowchart TB
     ldap["🔐<br/><b>LDAP Server</b><br/>[Container]<br/>Active Directory"]
     fileserver["📁<br/><b>File Server</b><br/>[Container]<br/>SMB"]
 
+    class browser,admin Person
     class ldap,fileserver ContainerExt
 
     browser -->|HTTPS| web
@@ -192,6 +198,7 @@ flowchart TB
 
 ```mermaid
 flowchart TB
+    classDef Person fill:#08427b,stroke:#073b6f,color:#fff,rx:20px,ry:20px,stroke-width:2px;
     classDef Container fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef ContainerDb fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef ContainerQueue fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
@@ -249,6 +256,7 @@ flowchart TB
     oauth["🔐<br/><b>OAuth Provider</b><br/>[Container]<br/>Auth0"]
     analytics["📋<br/><b>Analytics</b><br/>[Container]<br/>Segment"]
 
+    class user,admin Person
     class oauth,analytics ContainerExt
 
     user -->|HTTPS| spa
@@ -311,6 +319,7 @@ flowchart TB
 ```mermaid
 flowchart TB
     %% ===== STYLES =====
+    classDef Person fill:#08427b,stroke:#073b6f,color:#fff,rx:20px,ry:20px,stroke-width:2px;
     classDef Container fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef ContainerDb fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef ContainerQueue fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
@@ -319,6 +328,8 @@ flowchart TB
 
     %% ===== ACTORS =====
     user["👤<br/><b>User</b>"]
+
+    class user Person
 
     %% ===== MAIN SYSTEM BOUNDARY =====
     subgraph sys["System Name [Software System]"]

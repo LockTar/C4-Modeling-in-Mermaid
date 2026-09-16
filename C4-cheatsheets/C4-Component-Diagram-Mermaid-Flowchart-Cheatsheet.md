@@ -37,6 +37,8 @@ All Component-level elements shown together, plus the C4-PlantUML macro each one
 
 ```mermaid
 flowchart TB
+    classDef Person fill:#08427b,stroke:#073b6f,color:#fff,rx:20px,ry:20px,stroke-width:2px;
+    classDef PersonExt fill:#999999,stroke:#8a8a8a,color:#fff,rx:20px,ry:20px,stroke-width:2px;
     classDef Component fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef ComponentExt fill:#999999,stroke:#8a8a8a,color:#fff,stroke-width:2px;
     classDef ComponentDb fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
@@ -80,6 +82,7 @@ flowchart TB
 
 ```mermaid
 flowchart TB
+    classDef Person fill:#08427b,stroke:#073b6f,color:#fff,rx:20px,ry:20px,stroke-width:2px;
     classDef Component fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef ComponentDb fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef ComponentQueue fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
@@ -130,6 +133,7 @@ flowchart TB
     queue@{ shape: das, label: "📨<br/><b>Message Queue</b>" }
     extapi["🔗<br/><b>External API</b>"]
 
+    class client Person
     class extapi ComponentExt
 
     client -->|"REST"| userctrl
@@ -148,6 +152,7 @@ flowchart TB
 
 ```mermaid
 flowchart TB
+    classDef Person fill:#08427b,stroke:#073b6f,color:#fff,rx:20px,ry:20px,stroke-width:2px;
     classDef Component fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef ComponentDb fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef ComponentExt fill:#999999,stroke:#8a8a8a,color:#fff,stroke-width:2px;
@@ -190,6 +195,7 @@ flowchart TB
     cache[("⚡<br/><b>Session Cache</b>")]
     oauthprov["🔐<br/><b>OAuth Provider</b>"]
 
+    class request Person
     class oauthprov ComponentExt
 
     request -->|"HTTP"| authctrl
@@ -206,6 +212,7 @@ flowchart TB
 
 ```mermaid
 flowchart TB
+    classDef Person fill:#08427b,stroke:#073b6f,color:#fff,rx:20px,ry:20px,stroke-width:2px;
     classDef Component fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef ComponentDb fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef ComponentExt fill:#999999,stroke:#8a8a8a,color:#fff,stroke-width:2px;
@@ -257,6 +264,7 @@ flowchart TB
     api["☁️<br/><b>Backend API</b>"]
     extlib["📦<br/><b>Chart Library</b>"]
 
+    class user Person
     class extlib ComponentExt
 
     user -->|"Interact"| mainwin
@@ -309,6 +317,7 @@ flowchart TB
 ```mermaid
 flowchart TB
     %% ===== STYLES =====
+    classDef Person fill:#08427b,stroke:#073b6f,color:#fff,rx:20px,ry:20px,stroke-width:2px;
     classDef Component fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef ComponentDb fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef ComponentQueue fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
@@ -347,6 +356,7 @@ flowchart TB
     extdb[("💾<br/><b>Database</b>")]
     extlib["📦<br/><b>External Lib</b>"]
 
+    class input Person
     class extlib ComponentExt
 
     %% ===== RELATIONSHIPS =====
