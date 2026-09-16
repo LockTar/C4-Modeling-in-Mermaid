@@ -54,9 +54,9 @@ flowchart TB
     classDef SystemDbExt fill:#999999,stroke:#8a8a8a,color:#fff,stroke-width:2px;
     classDef SystemQueue fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef SystemQueueExt fill:#999999,stroke:#8a8a8a,color:#fff,stroke-width:2px;
-    classDef SystemBoundary fill:none,stroke:#999,stroke-width:2px,stroke-dasharray: 5 5,color:#444;
-    classDef EnterpriseBoundary fill:none,stroke:#444,stroke-width:3px,stroke-dasharray: 5 5,color:#444;
-    classDef Boundary fill:none,stroke:#999,stroke-width:2px,stroke-dasharray: 5 5,color:#444;
+    classDef SystemBoundary fill:#fff,stroke:#999,stroke-width:2px,stroke-dasharray: 5 5,color:#444;
+    classDef EnterpriseBoundary fill:#fff,stroke:#444,stroke-width:3px,stroke-dasharray: 5 5,color:#444;
+    classDef Boundary fill:#fff,stroke:#999,stroke-width:2px,stroke-dasharray: 5 5,color:#444;
 
     subgraph internal["Internal elements"]
         direction LR
@@ -129,7 +129,7 @@ flowchart TB
     classDef System fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef SystemExt fill:#999999,stroke:#8a8a8a,color:#fff,stroke-width:2px;
     classDef SystemDb fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
-    classDef SystemBoundary fill:none,stroke:#999,stroke-width:2px,stroke-dasharray: 5 5,color:#444;
+    classDef SystemBoundary fill:#fff,stroke:#999,stroke-width:2px,stroke-dasharray: 5 5,color:#444;
 
     %% External Actor
     customer["👤<br/><b>Customer</b><br/>[Person]"]
@@ -174,7 +174,7 @@ flowchart TB
     classDef System fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef SystemExt fill:#999999,stroke:#8a8a8a,color:#fff,stroke-width:2px;
     classDef SystemDb fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
-    classDef SystemBoundary fill:none,stroke:#999,stroke-width:2px,stroke-dasharray: 5 5,color:#444;
+    classDef SystemBoundary fill:#fff,stroke:#999,stroke-width:2px,stroke-dasharray: 5 5,color:#444;
 
     %% Internal Actor
     customer["👤<br/><b>Customer</b><br/>[Person]"]
@@ -224,7 +224,7 @@ flowchart TB
     classDef SystemExt fill:#999999,stroke:#8a8a8a,color:#fff,stroke-width:2px;
     classDef SystemDb fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef SystemQueue fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
-    classDef SystemBoundary fill:none,stroke:#999,stroke-width:2px,stroke-dasharray: 5 5,color:#444;
+    classDef SystemBoundary fill:#fff,stroke:#999,stroke-width:2px,stroke-dasharray: 5 5,color:#444;
 
     %% Actors
     employee["👤<br/><b>Employee</b><br/>[Person]"]
@@ -287,7 +287,7 @@ flowchart TB
     classDef SystemDb fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef SystemQueue fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef device fill:#0f5daf,stroke:#073b6f,color:#fff,stroke-width:2px;
-    classDef SystemBoundary fill:none,stroke:#999,stroke-width:2px,stroke-dasharray: 5 5,color:#444;
+    classDef SystemBoundary fill:#fff,stroke:#999,stroke-width:2px,stroke-dasharray: 5 5,color:#444;
 
     %% Actors
     operator["👤<br/><b>IoT Operator</b><br/>[Person]"]
@@ -420,37 +420,66 @@ flowchart TB
     classDef SystemDbExt fill:#999999,stroke:#8a8a8a,color:#fff,stroke-width:2px;
     classDef SystemQueue fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef SystemQueueExt fill:#999999,stroke:#8a8a8a,color:#fff,stroke-width:2px;
-    classDef SystemBoundary fill:none,stroke:#999,stroke-width:2px,stroke-dasharray: 5 5,color:#444;
-    classDef EnterpriseBoundary fill:none,stroke:#444,stroke-width:3px,stroke-dasharray: 5 5,color:#444;
+    classDef SystemBoundary fill:#fff,stroke:#999,stroke-width:2px,stroke-dasharray: 5 5,color:#444;
+    classDef EnterpriseBoundary fill:#fff,stroke:#444,stroke-width:3px,stroke-dasharray: 5 5,color:#444;
 
-    %% ===== ACTORS =====
-    user1["👤<br/><b>User</b><br/>[Person]"]
-
-    class user1 Person
-
-    %% ===== MAIN SYSTEM BOUNDARY =====
-    subgraph sys["Main System [Software System]"]
+    subgraph main["Title of the diagram"]
         direction TB
-        comp1["📋<br/><b>Component 1</b><br/>[Container]"]
-        comp2["📋<br/><b>Component 2</b><br/>[Container]"]
-        db[("💾<br/><b>Database</b><br/>[Database]")]
+        %% ===== ACTORS =====
+        user1["👤<br/><b>User</b><br/>[Person]"]
 
-        class comp1,comp2 System
-        class db SystemDb
+        class user1 Person
 
-        comp1 --> comp2
-        comp2 --> db
+        %% ===== MAIN SYSTEM BOUNDARY =====
+        subgraph sys["Main System [Software System]"]
+            direction TB
+            comp1["📋<br/><b>Component 1</b><br/>[Container]"]
+            comp2["📋<br/><b>Component 2</b><br/>[Container]"]
+            db[("💾<br/><b>Database</b><br/>[Database]")]
+
+            class comp1,comp2 System
+            class db SystemDb
+
+            comp1 --> comp2
+            comp2 --> db
+        end
+        class sys SystemBoundary;
+
+        %% ===== EXTERNAL SYSTEMS =====
+        ext1["🔗<br/><b>External System</b><br/>[External System]"]
+
+        class ext1 SystemExt
+
+        %% ===== RELATIONSHIPS =====
+        user1 -->|"Interaction<br/>[Protocol]"| comp1
+        comp1 -->|"Integration<br/>[Protocol]"| ext1
+
     end
-    class sys SystemBoundary;
 
-    %% ===== EXTERNAL SYSTEMS =====
-    ext1["🔗<br/><b>External System</b><br/>[External System]"]
+    %% ===== LEGEND =====
+    subgraph legend["🔷 Legend"]
+        direction LR
+        leg1["👤<br/><b>Person</b><br/>(Internal)"]
+        leg2["👤<br/><b>Person</b><br/>(External)"]
+        leg3["📋<br/><b>System</b><br/>(Internal)"]
+        leg4["🔗<br/><b>System</b><br/>(External)"]
+        leg5[("💾<br/><b>Database</b><br/>(Internal)")]
 
-    class ext1 SystemExt
+        leg1 ~~~ leg2 ~~~ leg3 ~~~ leg4 ~~~ leg5
 
-    %% ===== RELATIONSHIPS =====
-    user1 -->|"Interaction<br/>[Protocol]"| sys
-    sys -->|"Integration<br/>[Protocol]"| ext1
+        class leg1 Person
+        class leg2 PersonExt
+        class leg3 System
+        class leg4 SystemExt
+        class leg5 SystemDb
+    end
+    class legend SystemBoundary
+
+    main ~~~ legend
 ```
+
+### Warning
+
+Don't use relationships from boundary elements directly; always connect through the components inside the boundary. Styling will not be applied correctly if you connect to the boundary itself.
 
 > See the [README](./README.md#mermaid-rendering-tip) for a Mermaid rendering config tip.
