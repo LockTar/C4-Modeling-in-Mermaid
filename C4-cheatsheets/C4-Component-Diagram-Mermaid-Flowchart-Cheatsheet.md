@@ -127,7 +127,7 @@ flowchart TB
     end
 
     db[("💾<br/><b>Database</b>")]
-    queue["📨<br/><b>Message Queue</b>"]
+    queue@{ shape: das, label: "📨<br/><b>Message Queue</b>" }
     extapi["🔗<br/><b>External API</b>"]
 
     class extapi ComponentExt

@@ -61,7 +61,7 @@ flowchart TB
         p1["👤<br/><b>Person</b><br/>[1]"]
         s1["📋<br/><b>System</b><br/>[3]"]
         db1[("💾<br/><b>SystemDb</b><br/>[7]")]
-        q1["📨<br/><b>SystemQueue</b><br/>[6]"]
+        q1@{ shape: das, label: "📨<br/><b>SystemQueue</b><br/>[6]" }
     end
     class p1 Person
     class s1 System
@@ -73,7 +73,7 @@ flowchart TB
         p2["👤<br/><b>Person_Ext</b><br/>[2]"]
         s2["🔗<br/><b>System_Ext</b><br/>[4]"]
         db2[("💾<br/><b>SystemDb_Ext</b><br/>[8]")]
-        q2["📨<br/><b>SystemQueue_Ext</b><br/>[9]"]
+        q2@{ shape: das, label: "📨<br/><b>SystemQueue_Ext</b><br/>[9]" }
     end
     class p2 PersonExt
     class s2 SystemExt
@@ -242,7 +242,7 @@ flowchart TB
         class ui,api,workers System
         class db SystemDb
         cache[("⚡<br/><b>Cache</b><br/>[Data Store]")]
-        queue["📨<br/><b>Message Queue</b><br/>[System]"]
+        queue@{ shape: das, label: "📨<br/><b>Message Queue</b><br/>[System]" }
 
         class cache SystemDb
         class queue SystemQueue
@@ -307,7 +307,7 @@ flowchart TB
 
         timeseries[("⏱️<br/><b>Time Series DB</b><br/>[Database]")]
         cache[("⚡<br/><b>Cache</b><br/>[Data Store]")]
-        queue["📨<br/><b>Event Queue</b><br/>[System]"]
+        queue@{ shape: das, label: "📨<br/><b>Event Queue</b><br/>[System]" }
 
         class ingest,api,analytics,ui System
         class timeseries,cache SystemDb

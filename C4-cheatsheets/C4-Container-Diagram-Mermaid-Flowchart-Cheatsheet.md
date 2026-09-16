@@ -51,7 +51,7 @@ flowchart TB
         direction LR
         c1["📋<br/><b>Container</b><br/>[1]"]
         cdb1[("💾<br/><b>ContainerDb</b><br/>[3]")]
-        cq1["📨<br/><b>ContainerQueue</b><br/>[5]"]
+        cq1@{ shape: das, label: "📨<br/><b>ContainerQueue</b><br/>[5]" }
     end
     class c1 Container
     class cdb1 ContainerDb
@@ -61,7 +61,7 @@ flowchart TB
         direction LR
         c2["🔗<br/><b>Container_Ext</b><br/>[2]"]
         cdb2[("💾<br/><b>ContainerDb_Ext</b><br/>[4]")]
-        cq2["📨<br/><b>ContainerQueue_Ext</b><br/>[6]"]
+        cq2@{ shape: das, label: "📨<br/><b>ContainerQueue_Ext</b><br/>[6]" }
     end
     class c2 ContainerExt
     class cdb2 ContainerDbExt
@@ -114,7 +114,7 @@ flowchart TB
 
         maindb[("💾<br/><b>Main DB</b><br/>[Container]<br/>PostgreSQL")]
         cache[("⚡<br/><b>Cache</b><br/>[Container]<br/>Redis")]
-        queue["📨<br/><b>Queue</b><br/>[Container]<br/>RabbitMQ"]
+        queue@{ shape: das, label: "📨<br/><b>Queue</b><br/>[Container]<br/>RabbitMQ" }
 
         class spa,productapi,orderapi,paymentapi,queue Container
         class maindb,cache ContainerDb
@@ -220,7 +220,7 @@ flowchart TB
         cache[("⚡<br/><b>Cache</b><br/>[Container]<br/>Redis")]
         s3@{ shape: lin-cyl, label: "☁️<br/><b>Object Storage</b><br/>[Container]<br/>S3" }
 
-        queue["📨<br/><b>Event Bus</b><br/>[Container]<br/>Kafka"]
+        queue@{ shape: das, label: "📨<br/><b>Event Bus</b><br/>[Container]<br/>Kafka" }
         workers["🔄<br/><b>Workers</b><br/>[Container]<br/>Python"]
 
         class cdn,spa,apigw,authsvc,usersvc,bussvc,s3,workers Container
@@ -332,7 +332,7 @@ flowchart TB
         db[("💾<br/><b>Database</b><br/>[Container]<br/>Tech Stack")]
 
         %% Message Queue
-        queue["📨<br/><b>Queue</b><br/>[Container]<br/>Tech Stack"]
+        queue@{ shape: das, label: "📨<br/><b>Queue</b><br/>[Container]<br/>Tech Stack" }
 
         class web,api Container
         class db ContainerDb
