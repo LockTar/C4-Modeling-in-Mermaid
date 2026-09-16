@@ -47,7 +47,7 @@ flowchart TB
     classDef ContainerDbExt fill:#999999,stroke:#8a8a8a,color:#fff,stroke-width:2px;
     classDef ContainerQueue fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef ContainerQueueExt fill:#999999,stroke:#8a8a8a,color:#fff,stroke-width:2px;
-    classDef ContainerBoundary fill:none,stroke:#999,stroke-width:2px,stroke-dasharray: 5 5,color:#444;
+    classDef ContainerBoundary fill:#fff,stroke:#999,stroke-width:2px,stroke-dasharray: 5 5,color:#444;
 
     subgraph internal["Internal containers"]
         direction LR
@@ -98,7 +98,7 @@ flowchart TB
     classDef Container fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef ContainerDb fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef ContainerExt fill:#999999,stroke:#8a8a8a,color:#fff,stroke-width:2px;
-    classDef ContainerBoundary fill:none,stroke:#999,stroke-width:2px,stroke-dasharray: 5 5,color:#444;
+    classDef ContainerBoundary fill:#fff,stroke:#999,stroke-width:2px,stroke-dasharray: 5 5,color:#444;
 
     user["👤<br/><b>Customer</b>"]
 
@@ -155,7 +155,7 @@ flowchart TB
     classDef Container fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef ContainerDb fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef ContainerExt fill:#999999,stroke:#8a8a8a,color:#fff,stroke-width:2px;
-    classDef ContainerBoundary fill:none,stroke:#999,stroke-width:2px,stroke-dasharray: 5 5,color:#444;
+    classDef ContainerBoundary fill:#fff,stroke:#999,stroke-width:2px,stroke-dasharray: 5 5,color:#444;
 
     browser["👨‍💼<br/><b>User</b>"]
     admin["👨‍💼<br/><b>Admin</b>"]
@@ -203,7 +203,7 @@ flowchart TB
     classDef ContainerDb fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef ContainerQueue fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef ContainerExt fill:#999999,stroke:#8a8a8a,color:#fff,stroke-width:2px;
-    classDef ContainerBoundary fill:none,stroke:#999,stroke-width:2px,stroke-dasharray: 5 5,color:#444;
+    classDef ContainerBoundary fill:#fff,stroke:#999,stroke-width:2px,stroke-dasharray: 5 5,color:#444;
 
     user["👤<br/><b>User</b>"]
     admin["👤<br/><b>Admin</b>"]
@@ -320,57 +320,82 @@ flowchart TB
 flowchart TB
     %% ===== STYLES =====
     classDef Person fill:#08427b,stroke:#073b6f,color:#fff,rx:20px,ry:20px,stroke-width:2px;
+    classDef PersonExt fill:#999999,stroke:#8a8a8a,color:#fff,rx:20px,ry:20px,stroke-width:2px;
     classDef Container fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef ContainerDb fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef ContainerQueue fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef ContainerExt fill:#999999,stroke:#8a8a8a,color:#fff,stroke-width:2px;
-    classDef ContainerBoundary fill:none,stroke:#999,stroke-width:2px,stroke-dasharray: 5 5,color:#444;
+    classDef ContainerBoundary fill:#fff,stroke:#999,stroke-width:2px,stroke-dasharray: 5 5,color:#444;
 
-    %% ===== ACTORS =====
-    user["👤<br/><b>User</b>"]
-
-    class user Person
-
-    %% ===== MAIN SYSTEM BOUNDARY =====
-    subgraph sys["System Name [Software System]"]
+    subgraph main["Title of the diagram"]
         direction TB
+        %% ===== ACTORS =====
+        user["👤<br/><b>User</b>"]
 
-        %% Internal Containers
-        web["🌐<br/><b>Web App</b><br/>[Container]<br/>Tech Stack"]
-        api["⚙️<br/><b>API</b><br/>[Container]<br/>Tech Stack"]
+        class user Person
 
-        %% Database Containers
-        db[("💾<br/><b>Database</b><br/>[Container]<br/>Tech Stack")]
+        %% ===== MAIN SYSTEM BOUNDARY =====
+        subgraph sys["System Name [Software System]"]
+            direction TB
 
-        %% Message Queue
-        queue@{ shape: das, label: "📨<br/><b>Queue</b><br/>[Container]<br/>Tech Stack" }
+            %% Internal Containers
+            web["🌐<br/><b>Web App</b><br/>[Container]<br/>Tech Stack"]
+            api["⚙️<br/><b>API</b><br/>[Container]<br/>Tech Stack"]
 
-        class web,api Container
-        class db ContainerDb
-        class queue ContainerQueue
+            %% Database Containers
+            db[("💾<br/><b>Database</b><br/>[Container]<br/>Tech Stack")]
 
-        %% Relationships
-        web -->|REST| api
-        api -->|SQL| db
-        api -->|Publish| queue
+            %% Message Queue
+            queue@{ shape: das, label: "📨<br/><b>Queue</b><br/>[Container]<br/>Tech Stack" }
+
+            class web,api Container
+            class db ContainerDb
+            class queue ContainerQueue
+
+            %% Relationships
+            web -->|REST| api
+            api -->|SQL| db
+            api -->|Publish| queue
+        end
+        class sys ContainerBoundary;
+
+        %% ===== EXTERNAL CONTAINERS =====
+        extservice["🔗<br/><b>External Service</b><br/>[Container]<br/>Tech Stack"]
+
+        class extservice ContainerExt
+
+        %% ===== RELATIONSHIPS =====
+        user -->|HTTPS| web
+        queue -->|REST| extservice
     end
-    class sys ContainerBoundary;
 
-    %% ===== EXTERNAL CONTAINERS =====
-    extservice["🔗<br/><b>External Service</b><br/>[Container]<br/>Tech Stack"]
+    %% ===== LEGEND =====
+    subgraph legend["🔷 Legend"]
+        direction LR
+        leg1["👤<br/><b>Person</b><br/>(Internal)"]
+        leg2["👤<br/><b>Person</b><br/>(External)"]
+        leg3["📋<br/><b>System</b><br/>(Internal)"]
+        leg4["🔗<br/><b>System</b><br/>(External)"]
+        leg5[("💾<br/><b>Database</b><br/>(Internal)")]
 
-    class extservice ContainerExt
+        leg1 ~~~ leg2 ~~~ leg3 ~~~ leg4 ~~~ leg5
 
-    %% ===== RELATIONSHIPS =====
-    user -->|HTTPS| web
-    queue -->|REST| extservice
+        class leg1 Person
+        class leg2 PersonExt
+        class leg3 System
+        class leg4 SystemExt
+        class leg5 SystemDb
+    end
+    class legend SystemBoundary
+
+    main ~~~ legend
 ```
 
 ---
 
 ## Container Diagram Layers (C4 Model)
 
-```
+```text
 Level 1: System Context     → Systems & People
 Level 2: Container          ← YOU ARE HERE (Deployable units)
 Level 3: Component          → Internal components

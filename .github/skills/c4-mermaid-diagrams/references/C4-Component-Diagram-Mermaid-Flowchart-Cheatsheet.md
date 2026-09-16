@@ -320,58 +320,85 @@ flowchart TB
 flowchart TB
     %% ===== STYLES =====
     classDef Person fill:#08427b,stroke:#073b6f,color:#fff,rx:20px,ry:20px,stroke-width:2px;
+    classDef PersonExt fill:#999999,stroke:#8a8a8a,color:#fff,rx:20px,ry:20px,stroke-width:2px;
     classDef Component fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef ComponentDb fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef ComponentQueue fill:#1168bd,stroke:#0f5daf,color:#fff,stroke-width:2px;
     classDef ComponentExt fill:#999999,stroke:#8a8a8a,color:#fff,stroke-width:2px;
 
-    %% ===== EXTERNAL INPUT =====
-    input["📱<br/><b>Client Request</b>"]
-
-    %% ===== CONTAINER BOUNDARY =====
-    subgraph container["Container Name [Technology]"]
+    subgraph main["Title of the diagram"]
         direction TB
+        %% ===== EXTERNAL INPUT =====
+        input["📱<br/><b>Client Request</b>"]
 
-        %% Layer 1: Interface/Controller
-        ctrl["⚙️<br/><b>Controller</b><br/>[Component]<br/>Tech"]
+        class input Person
 
-        %% Layer 2: Business Logic
-        svc["💼<br/><b>Service</b><br/>[Component]<br/>Tech"]
+        %% ===== CONTAINER BOUNDARY =====
+        subgraph container["Container Name [Technology]"]
+            direction TB
 
-        %% Layer 3: Data Access
-        repo[("📊<br/><b>Repository</b><br/>[Component]<br/>Tech")]
+            %% Layer 1: Interface/Controller
+            ctrl["⚙️<br/><b>Controller</b><br/>[Component]<br/>Tech"]
 
-        %% Events
-        events@{ shape: das, label: "📡<br/><b>Event Handler</b><br/>[Component]<br/>Tech" }
+            %% Layer 2: Business Logic
+            svc["💼<br/><b>Service</b><br/>[Component]<br/>Tech"]
 
-        class events ComponentQueue
-        class ctrl,svc Component
-        class repo ComponentDb
+            %% Layer 3: Data Access
+            repo[("📊<br/><b>Repository</b><br/>[Component]<br/>Tech")]
 
-        %% Dependencies
-        ctrl -->|"Use"| svc
-        svc -->|"Use"| repo
-        svc -->|"Publish"| events
+            %% Events
+            events@{ shape: das, label: "📡<br/><b>Event Handler</b><br/>[Component]<br/>Tech" }
+
+            class events ComponentQueue
+            class ctrl,svc Component
+            class repo ComponentDb
+
+            %% Dependencies
+            ctrl -->|"Use"| svc
+            svc -->|"Use"| repo
+            svc -->|"Publish"| events
+        end
+
+        %% ===== EXTERNAL SYSTEMS =====
+        extdb[("💾<br/><b>Database</b>")]
+        extlib["📦<br/><b>External Lib</b>"]
+
+        class extdb ComponentDb
+        class extlib ComponentExt
+
+        %% ===== RELATIONSHIPS =====
+        input -->|"HTTP"| ctrl
+        repo -->|"Query"| extdb
+        svc -->|"Use"| extlib
     end
 
-    %% ===== EXTERNAL SYSTEMS =====
-    extdb[("💾<br/><b>Database</b>")]
-    extlib["📦<br/><b>External Lib</b>"]
+    %% ===== LEGEND =====
+    subgraph legend["🔷 Legend"]
+        direction LR
+        leg1["👤<br/><b>Person</b><br/>(Internal)"]
+        leg2["👤<br/><b>Person</b><br/>(External)"]
+        leg3["📋<br/><b>System</b><br/>(Internal)"]
+        leg4["🔗<br/><b>System</b><br/>(External)"]
+        leg5[("💾<br/><b>Database</b><br/>(Internal)")]
 
-    class input Person
-    class extlib ComponentExt
+        leg1 ~~~ leg2 ~~~ leg3 ~~~ leg4 ~~~ leg5
 
-    %% ===== RELATIONSHIPS =====
-    input -->|"HTTP"| ctrl
-    repo -->|"Query"| extdb
-    svc -->|"Use"| extlib
+        class leg1 Person
+        class leg2 PersonExt
+        class leg3 Component
+        class leg4 ComponentExt
+        class leg5 ComponentDb
+    end
+    class legend ComponentBoundary
+
+    main ~~~ legend
 ```
 
 ---
 
 ## C4 Model Progression: Context → Container → Component
 
-```
+```text
 Context Diagram
   └─ Shows overall system context and external systems
 
