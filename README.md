@@ -16,12 +16,12 @@ Mermaid ships built-in `C4Context`, `C4Container`, `C4Component`, and `C4Dynamic
 
 ## Files in this folder
 
-| File                                                                                                           | Covers                                             | Use it when you need to draw...               |
-| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- | --------------------------------------------- |
-| [C4-Context-Diagram-Mermaid-Flowchart-Cheatsheet.md](./C4-Context-Diagram-Mermaid-Flowchart-Cheatsheet.md)     | People, systems, system/enterprise boundaries      | Level 1 — the system(s) in their environment  |
-| [C4-Container-Diagram-Mermaid-Flowchart-Cheatsheet.md](./C4-Container-Diagram-Mermaid-Flowchart-Cheatsheet.md) | Containers (apps, APIs, databases, queues)         | Level 2 — deployable units inside one system  |
-| [C4-Component-Diagram-Mermaid-Flowchart-Cheatsheet.md](./C4-Component-Diagram-Mermaid-Flowchart-Cheatsheet.md) | Components (controllers, services, repositories)   | Level 3 — internal structure of one container |
-| [C4-Relationships-Layouts-Cheatsheet.md](./C4-Relationships-Layouts-Cheatsheet.md)                             | Relationship (`Rel`/`BiRel`) and layout directives | Arrows, direction, and grouping at any level  |
+| File                                                                                                                          | Covers                                             | Use it when you need to draw...               |
+| ----------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- | --------------------------------------------- |
+| [C4-Context-Diagram-Mermaid-Flowchart-Cheatsheet.md](./C4-cheatsheets/C4-Context-Diagram-Mermaid-Flowchart-Cheatsheet.md)     | People, systems, system/enterprise boundaries      | Level 1 — the system(s) in their environment  |
+| [C4-Container-Diagram-Mermaid-Flowchart-Cheatsheet.md](./C4-cheatsheets/C4-Container-Diagram-Mermaid-Flowchart-Cheatsheet.md) | Containers (apps, APIs, databases, queues)         | Level 2 — deployable units inside one system  |
+| [C4-Component-Diagram-Mermaid-Flowchart-Cheatsheet.md](./C4-cheatsheets/C4-Component-Diagram-Mermaid-Flowchart-Cheatsheet.md) | Components (controllers, services, repositories)   | Level 3 — internal structure of one container |
+| [C4-Relationships-Layouts-Cheatsheet.md](./C4-cheatsheets/C4-Relationships-Layouts-Cheatsheet.md)                             | Relationship (`Rel`/`BiRel`) and layout directives | Arrows, direction, and grouping at any level  |
 
 ## How each cheatsheet is structured
 
