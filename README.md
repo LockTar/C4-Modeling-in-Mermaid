@@ -1,6 +1,21 @@
 # C4 Cheatsheets (Mermaid Flowchart Edition)
 
-Index and rationale for the C4 model cheatsheets in this folder.
+A collection of **Mermaid flowchart-based cheatsheets** for drawing C4 model architecture diagrams using plain, controllable syntax instead of Mermaid's native (but limited) C4 diagram types.
+
+## What is C4 Modeling?
+
+**C4** is a hierarchical approach to architecture diagramming developed by [Simon Brown](https://simonbrown.je/). It defines four levels of abstraction:
+
+- **Context (Level 1):** The system and its environment — people, external systems, enterprise boundaries.
+- **Container (Level 2):** Deployable units — applications, APIs, databases, message queues, services.
+- **Component (Level 3):** Internal structure of a container — controllers, services, repositories, handlers.
+- **Code (Level 4):** Implementation details — classes, functions, packages, and dependencies within a component.
+
+For more details, visit the **[official C4 model documentation](https://c4model.com/)** and the **[Diagrams guide](https://c4model.com/diagrams)** to see all diagram types. Also explore **[C4-PlantUML](https://github.com/plantuml-stdlib/C4-PlantUML)**, the reference implementation used by architects worldwide.
+
+### The Four Core Diagram Levels
+
+![C4 Static Structure Diagrams](./img/c4-static.png)
 
 ## Why not mermaid's native C4 diagrams?
 
