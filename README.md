@@ -1,5 +1,7 @@
 # C4 Cheatsheets (Mermaid Flowchart Edition)
 
+> ⚠️ **Release Candidate (RC)** — This is not yet a final release. Cheatsheets, examples, and styling are still being refined. Feedback and contributions are welcome. Expect minor changes to syntax, colors, or structure before v1.0.
+
 A collection of **Mermaid flowchart-based cheatsheets** for drawing C4 model architecture diagrams using plain, controllable syntax instead of Mermaid's native (but limited) C4 diagram types.
 
 ## What is C4 Modeling?
