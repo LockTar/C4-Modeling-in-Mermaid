@@ -1,4 +1,4 @@
-# C4 Cheatsheets (Mermaid Flowchart Edition)
+# C4 Modeling (Mermaid Flowchart Edition)
 
 > ⚠️ **Release Candidate (RC)** — This is not yet a final release. Cheatsheets, examples, and styling are still being refined. Feedback and contributions are welcome. Expect minor changes to syntax, colors, or structure before v1.0.
 
